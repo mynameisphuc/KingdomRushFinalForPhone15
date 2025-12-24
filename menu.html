@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kingdom JS - Game Menu</title>
+    <style>
+        :root {
+            --primary: #f1c40f;
+            --danger: #e74c3c;
+            --bg: #2c3e50;
+            --panel-bg: #3e2723;
+        }
+        body {
+            margin: 0; padding: 0;
+            background: radial-gradient(circle, #2c3e50 0%, #000 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            display: flex; flex-direction: column; align-items: center;
+            min-height: 100vh; overflow-x: hidden;
+        }
+        h1 {
+            margin-top: 50px; font-size: 3.5rem; color: var(--primary);
+            text-shadow: 0 5px 15px rgba(241, 196, 15, 0.5);
+            letter-spacing: 5px; text-transform: uppercase;
+        }
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px; margin-top: 50px;
+            max-width: 1000px; padding: 20px;
+        }
+        .level-card {
+            background: var(--panel-bg);
+            border: 4px solid #5d4037; border-radius: 15px;
+            width: 250px; height: 350px;
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center; cursor: pointer;
+            transition: all 0.3s ease; position: relative;
+            overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        .level-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(241, 196, 15, 0.3);
+        }
+        .level-card.locked {
+            filter: grayscale(1); opacity: 0.6; cursor: not-allowed;
+        }
+        .level-card.locked:hover { transform: none; border-color: #5d4037; }
+        
+        .level-num { font-size: 5rem; font-weight: bold; margin: 0; color: rgba(255,255,255,0.1); position: absolute; top: 10px; }
+        .level-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; z-index: 2; }
+        .level-desc { font-size: 0.9rem; text-align: center; padding: 0 20px; color: #bdc3c7; z-index: 2; }
+        .btn-play {
+            margin-top: 20px; padding: 10px 30px;
+            background: var(--primary); color: #000;
+            border: none; border-radius: 5px; font-weight: bold;
+            text-transform: uppercase; transition: 0.2s;
+        }
+        .level-card:not(.locked):hover .btn-play { background: #fff; transform: scale(1.1); }
+        .lock-icon { font-size: 3rem; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <h1>Kingdom JS: Tower Defense</h1>
+    <p style="color: #bdc3c7;">Lựa chọn chiến trường của bạn, Bệ hạ!</p>
+
+    <div class="menu-container">
+        <div class="level-card" onclick="window.location.href='game1.html'">
+            <div class="level-num">01</div>
+            <div class="level-title">Cửa Ải Đầu</div>
+            <p class="level-desc">Khi bóng tối lấp đầy tầm mắt, lòng dũng cảm là vũ khí duy nhất còn lại.</p>
+            <button class="btn-play">CHIẾN ĐẤU</button>
+        </div>
+
+        <div class="level-card" onclick="window.location.href='game2.html'">
+            <div class="level-num">02</div>
+            <div class="level-title">Rừng Ma Thuật</div>
+            <p class="level-desc">Quái vật di chuyển nhanh hơn trong bóng tối.</p>
+            <button class="btn-play">CHIẾN ĐẤU</button>
+        </div>
+
+        <script>
+            const levels = [
+                // { id: 2, title: "Rừng Ma Thuật", desc: "Quái vật di chuyển nhanh hơn trong bóng tối." },
+                { id: 3, title: "Sa Mạc Lửa", desc: "Nhiệt độ làm giảm tầm đánh của quân lính." },
+                { id: 4, title: "Đỉnh Băng Giá", desc: "Quân địch có giáp băng cực dày." },
+                { id: 5, title: "Vực Thẳm", desc: "Nơi trú ngụ của những con rồng cổ đại." },
+                { id: 6, title: "Thủ Đô Cuối", desc: "Trận chiến sinh tử bảo vệ ngai vàng." }
+            ];
+
+            levels.forEach(lvl => {
+                document.write(`
+                    <div class="level-card locked">
+                        <div class="level-num">0${lvl.id}</div>
+                        <div class="level-title">${lvl.title}</div>
+                        <p class="level-desc">${lvl.desc}</p>
+                        <div class="lock-icon">🔒</div>
+                    </div>
+                `);
+            });
+        </script>
+    </div>
+
+</body>
+</html>

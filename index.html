@@ -2088,7 +2088,7 @@ class Game {
             let ty = ((this.selectedPad.y + (step.menuArrow.y * mobileMenuScale)) * ratio) + rect.top;
 
             arrowDom.style.left = tx - 150 + 'px';
-            arrowDom.style.top = ty + 150 + 'px';
+            arrowDom.style.top = ty + 'px';
             
             // 3. Căn giữa mũi tên và thu nhỏ hình ảnh mũi tên theo tỉ lệ màn hình điện thoại
             arrowDom.style.transform = `translate(-50%, -100%) scale(${ratio})`;
